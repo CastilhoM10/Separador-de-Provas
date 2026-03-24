@@ -88,6 +88,13 @@ function atualizarUI() {
 }
 
 document.getElementById('pdfFile').addEventListener('change', function() {
-  const fileName = this.files[0]?.name || "Selecionar PDF";
-  document.getElementById('fileLabel').innerText = "📄 " + fileName;
+  const label = document.getElementById('fileLabel');
+
+  if (this.files.length > 0) {
+    label.innerText = "✅ " + this.files[0].name;
+    label.classList.add("active");
+  } else {
+    label.innerText = "📂 Selecionar PDF";
+    label.classList.remove("active");
+  }
 });
